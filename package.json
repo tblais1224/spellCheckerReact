@@ -1,0 +1,19 @@
+{
+  "name": "spellcheckreact",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tblais1224/spellCheckerReact.git"
+  },
+  "author": "tblais1224",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tblais1224/spellCheckerReact/issues"
+  },
+  "homepage": "https://github.com/tblais1224/spellCheckerReact#readme"
+}
