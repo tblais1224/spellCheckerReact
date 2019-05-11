@@ -32,8 +32,6 @@ class App extends Component {
 
     const request = new Request("http://localhost:3001/api/putData", options)
     fetch(request)
-
-
 }
 
   putDataToDB = () => {
