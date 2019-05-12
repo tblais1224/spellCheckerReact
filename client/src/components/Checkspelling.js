@@ -51,7 +51,7 @@ class SpellCheck extends Component {
                 </form>
                 <br />
                 <label>Results:
-                <div className="container" dangerouslySetInnerHTML={this.createMarkup()}></div>
+                <div dangerouslySetInnerHTML={this.createMarkup()}></div>
                 </label>
             </div>
         )
