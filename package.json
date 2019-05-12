@@ -19,6 +19,7 @@
   "homepage": "https://github.com/tblais1224/spellCheckerReact#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "mongodb": "^3.2.4",
     "react-router-dom": "^5.0.0"
   }
 }
