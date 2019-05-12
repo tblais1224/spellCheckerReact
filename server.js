@@ -19,10 +19,10 @@ client.connect(err => {
         throw err
     }
     const collection = client.db("dictionary").collection("new_data");
+
     // perform actions on the collection object
     dictionaryData = collection
-    client.close();
-});
+})
 
 app.get("/", (req, res) => {
     res.send("TESTING 1,2,3 . EXPRESS SERVER IS RUNNING ON PORT 3000, route /")
@@ -30,9 +30,9 @@ app.get("/", (req, res) => {
 
 app.post("/checked", (req, res) => {
     console.log(req.body.userInput)
-    res.json("testing the response post router")
+    // res.json("testing the response post router")
     spellCheckBackend(req.body.userInput, dictionaryData).then((result) => {
-        res.send(outputSpellCheck(result, req.body));
+        res.send(outputSpellCheck(result, req.body.userInput));
     });
 })
 

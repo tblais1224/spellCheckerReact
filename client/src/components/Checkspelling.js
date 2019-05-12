@@ -26,10 +26,16 @@ class SpellCheck extends Component {
             data: user,
         })
             .then(response => {
-                this.setState({results: response.data})})
+                this.setState({ results: response.data.string })
+                console.log(this.state, response.data.string)
+            })
             .catch(error => {
                 throw error;
             });
+    }
+
+    createMarkup = () => {
+        return { __html: this.state.results };
     }
 
     render() {
@@ -43,7 +49,10 @@ class SpellCheck extends Component {
                     </label>
                     <button type="submit">Submit</button>
                 </form>
-                <p>{this.state.results}</p>
+                <br />
+                <label>Results:
+                <div className="container" dangerouslySetInnerHTML={this.createMarkup()}></div>
+                </label>
             </div>
         )
     }

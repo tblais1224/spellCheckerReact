@@ -1,6 +1,6 @@
 
 function spellCheckBackend(inputString, dictionaryData) {
-    var inputArray = inputString.input.split(" ");
+    var inputArray = inputString.split(" ");
     var dbResults = [];
     inputArray.forEach(word => {
         var filteredWord = word.replace(/[^A-Za-z]/g, "").toLowerCase();
@@ -14,12 +14,12 @@ function outputSpellCheck(dbResults, inputString) {
         string: String
     };
     var i = 0;
-    var inputArray = inputString.input.split(" ");
+    var inputArray = inputString.split(" ");
     var stringOutput = "";
     
     dbResults.forEach(checkedWord => {
         if (checkedWord === null) {
-            stringOutput += ('<span id="incorrect">' + inputArray[i] + ' </span>');
+            stringOutput += ('<span id="redHighlight">' + inputArray[i] + ' </span>');
             i++;
         }
         else {
