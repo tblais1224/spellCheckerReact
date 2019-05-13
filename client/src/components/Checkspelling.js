@@ -56,7 +56,10 @@ class SpellCheck extends Component {
                 <label>Results:
                 <div className="resultsDiv container">
                         {this.state.results.map((word) => {
-                            if (word[1] === true || this.state.addWords.includes(word[0])) {
+                            let addedWordArray = []
+                            this.state.addWords.map(word => addedWordArray.push(word))
+                            console.log(addedWordArray)
+                            if (word[1] === true || addedWordArray.indexOf(word[0]) !== -1) {
                                 return <span>{word[0]}</span>
                             } else {
                                 return <span onClick={this.handleWordClick} className="yellow">{word[0]}</span>
