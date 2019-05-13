@@ -10,25 +10,25 @@ function spellCheckBackend(inputString, dictionaryData) {
 }
 
 function outputSpellCheck(dbResults, inputString) {
-    var api = {
-        string: String
+    var apiResults = {
+        resultArr: []
     };
     var i = 0;
     var inputArray = inputString.split(" ");
-    var stringOutput = "";
+    var outputArr = [];
     
     dbResults.forEach(checkedWord => {
         if (checkedWord === null) {
-            stringOutput += ('<span id="redHighlight">' + inputArray[i] + ' </span>');
+            outputArr.push([inputArray[i] + " ", false]);
             i++;
         }
         else {
-            stringOutput += (inputArray[i] + " ");
+            outputArr.push([inputArray[i] + " ", true]);
             i++;
         }
     });
-    api = { string: stringOutput };
-    return api;
+    apiResults = { resultArr: outputArr };
+    return apiResults;
 }
 
 module.exports = {

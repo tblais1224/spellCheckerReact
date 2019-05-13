@@ -5,7 +5,8 @@ import axios from "axios";
 class SpellCheck extends Component {
     state = {
         userInput: '',
-        results: ""
+        results: [],
+        addWords: []
     }
 
     handleChange = event => {
@@ -26,16 +27,18 @@ class SpellCheck extends Component {
             data: user,
         })
             .then(response => {
-                this.setState({ results: response.data.string })
-                console.log(this.state, response.data.string)
+                this.setState({ results: response.data.resultArr })
             })
             .catch(error => {
                 throw error;
             });
     }
 
-    createMarkup = () => {
-        return { __html: this.state.results };
+    handleWordClick = event => {
+        if (event.target.className === "yellow") {
+            event.target.className = "white"
+            this.setState({ addWords: [...this.state.addWords, event.target.innerText] })
+        }
     }
 
     render() {
@@ -51,7 +54,20 @@ class SpellCheck extends Component {
                 </form>
                 <br />
                 <label>Results:
-                <div dangerouslySetInnerHTML={this.createMarkup()}></div>
+                <div className="resultsDiv container">
+                        {this.state.results.map((word) => {
+                            if (word[1] === true || this.state.addWords.includes(word[0])) {
+                                return <span>{word[0]}</span>
+                            } else {
+                                return <span onClick={this.handleWordClick} className="yellow">{word[0]}</span>
+                            }
+                        })}
+                    </div>
+                </label><br /><br />
+                <label>Your added dictionary words:
+                    <div className="resultsDiv container">
+                        {this.state.addWords.map((word) => { return <span>{word}<br /></span> })}
+                    </div>
                 </label>
             </div>
         )

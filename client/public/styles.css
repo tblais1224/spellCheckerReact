@@ -1,2 +1,8 @@
-#redHighlight{
-    background-color: yellow}
+
+#redHighlight {
+    background-color: yellow
+}
+.resultsDiv {
+    color: black;
+    font-size: 18px
+}
