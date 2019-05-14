@@ -58,7 +58,6 @@ class SpellCheck extends Component {
                         {this.state.results.map((word) => {
                             let addedWordArray = []
                             this.state.addWords.map(word => addedWordArray.push(word))
-                            console.log(addedWordArray)
                             if (word[1] === true || addedWordArray.indexOf(word[0]) !== -1) {
                                 return <span>{word[0]}</span>
                             } else {
@@ -78,3 +77,5 @@ class SpellCheck extends Component {
 }
 
 export default SpellCheck
+
+

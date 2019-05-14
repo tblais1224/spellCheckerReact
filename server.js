@@ -9,11 +9,11 @@ const spellCheckBackend = MyMethods.method;
 const outputSpellCheck = MyMethods.otherMethod;
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 
 let dictionaryData;
-const client = new MongoClient(uri, { useNewUrlParser: true });
+const client = new MongoClient(uri, {useNewUrlParser: true})
 client.connect(err => {
     if (err) {
         throw err
@@ -29,12 +29,18 @@ app.get("/", (req, res) => {
 })
 
 app.post("/checked", (req, res) => {
-    console.log(req.body.userInput)
+    // console.log(req.body.userInput)
     // res.json("testing the response post router")
     spellCheckBackend(req.body.userInput, dictionaryData).then((result) => {
+        console.log(result)
         res.send(outputSpellCheck(result, req.body.userInput));
     });
 })
 
 const PORT = process.env.PORT || 3000
-app.listen(PORT, (req, res) => { console.log("server running on port " + PORT) })
+app.listen(PORT, (err) => {
+    if (err) {
+        console.log(err)
+    }
+    console.log("server running on port " + PORT)
+})
